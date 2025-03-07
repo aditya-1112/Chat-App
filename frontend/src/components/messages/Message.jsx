@@ -11,7 +11,7 @@ const Message = () => {
 							src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
 					</div>
 				</div>
-				<div className={`chat-bubble text-white bg-blue-500`}>
+				<div className={`chat-bubble text-white bg-blue-500 shadow`}>
 					Hello how are you?
 				</div>
 				<div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>13:51</div>
