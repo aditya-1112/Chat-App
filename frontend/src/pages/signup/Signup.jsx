@@ -21,7 +21,6 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await signup(inputs);
-		//console.log(inputs);
 	}
 
   return (
@@ -72,8 +71,9 @@ const Signup = () => {
           <GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender}/>
 
 					<div>
-						<button className='btn btn-soft btn-block mt-7 border-0 bg-blue-900 hover:bg-blue-700 text-base'>
-              Signup
+						<button className='btn btn-soft btn-block mt-7 border-0 bg-blue-900 hover:bg-blue-700 text-base'
+						disabled={loading}>
+              {loading? <span className='loading loading-spinner'></span>: "Signup"}
             </button>
 					</div>
 

@@ -10,8 +10,6 @@ const useSignup = () => {
     const success = handleInputErrors({ fullName, username, password, confirmPassword, gender })
     if (!success) return;
 
-    
-
     setLoading(true);
     try {
       const res = await fetch("/api/auth/signup", {
