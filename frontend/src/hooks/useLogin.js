@@ -3,25 +3,25 @@ import toast from 'react-hot-toast';
 import { UseAuthContext } from '../context/AuthContext';
 
 const useLogin = () => {
-  const [loading, setLoading] = useState(false);
-	const {setAuthUser} = UseAuthContext();
+	const [loading, setLoading] = useState(false);
+	const { setAuthUser } = UseAuthContext();
 
 	const login = async (username, password) => {
 		const success = handleInputErrors(username, password)
-    if (!success) return;
+		if (!success) return;
 
 		setLoading(true);
 		try {
 			const res = await fetch("/api/auth/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password}),
+				body: JSON.stringify({ username, password }),
 			})
 
 			const data = await res.json();
-			if(data.error){
-        throw new Error(data.error);
-      }
+			if (data.error) {
+				throw new Error(data.error);
+			}
 			console.log(data);
 
 			localStorage.setItem("chat-user", JSON.stringify(data));
@@ -33,16 +33,16 @@ const useLogin = () => {
 			setLoading(false);
 		}
 	}
-  
-	return {loading, login}
+
+	return { loading, login }
 }
 
 export default useLogin
 
 function handleInputErrors(username, password) {
-  if (!username || !password ) {
-    toast.error("Please fill in all fields!");
-    return false;
-  }
+	if (!username || !password) {
+		toast.error("Please fill in all fields!");
+		return false;
+	}
 	return true;
 }
